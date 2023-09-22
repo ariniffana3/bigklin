@@ -148,6 +148,7 @@ module.exports = {
         jumlahPakaian,
         aromaParfum,
         hargaTotal,
+        status,
       } = request.body;
       if (
         !tanggal ||
@@ -157,7 +158,8 @@ module.exports = {
         !beratCucian ||
         !jumlahPakaian ||
         !aromaParfum ||
-        !hargaTotal
+        !hargaTotal ||
+        !status
       ) {
         return helperWrapper.response(
           response,
@@ -177,6 +179,7 @@ module.exports = {
         jumlahPakaian: jumlahPakaian * 1,
         aromaParfum,
         hargaTotal: hargaTotal * 1,
+        status,
         created_at: new Date(),
       };
       await connection
