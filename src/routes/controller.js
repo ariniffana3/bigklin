@@ -102,6 +102,7 @@ module.exports = {
   getOrder: async (request, response) => {
     try {
       const { startDate, endDate } = request.body;
+      console.log(startDate, endDate);
       let data = [];
       if (!startDate && !endDate) {
         await connection
