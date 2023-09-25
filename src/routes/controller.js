@@ -137,6 +137,36 @@ module.exports = {
       );
     }
   },
+  getOrderById: async (request, response) => {
+    try {
+      const { id } = request.params;
+
+      let data = [];
+      await connection
+        .promise()
+        .query(`select * from pelanggan where id = '${id}'`)
+        .then(([rows, fields]) => {
+          data = rows;
+        })
+        .catch((err) => {
+          throw err;
+        });
+
+      if (data.length == 0) {
+        return helperWrapper.response(response, 404, "Data Not Found");
+      }
+
+      return helperWrapper.response(response, 200, "Get Data Success", data);
+    } catch (error) {
+      console.log(error);
+      return helperWrapper.response(
+        response,
+        500,
+        "Internal Server Error",
+        null
+      );
+    }
+  },
   postOrder: async (request, response) => {
     try {
       const {

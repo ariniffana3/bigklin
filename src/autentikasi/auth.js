@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const helperWrapper = require("../helper/wrapper");
 
 module.exports = {
   authentication: async (request, response, next) => {
